@@ -9,7 +9,7 @@
           Vertebral Width <br />
           (*Please Enter A Integer Between 20~70.)<br />
         </h2>
-        <input type="number" v-model="vertebral_width" />
+        <input id="input_width" type="number" v-model="vertebral_width" />
         <div id="width">{{ vertebral_width }}</div>
       </div>
       <div id="edge">
@@ -17,7 +17,7 @@
           Distance from the vertebral edge to the pedicle major axis
           <br />(*Please Enter A Decimal Rounded To 2 Decimals Places)<br />
         </h2>
-        <input type="number" v-model="edge_axis_distance" />
+        <input id="input_distance" type="number" v-model="edge_axis_distance" />
         <div id="distance">{{ edge_axis_distance }}</div>
       </div>
       <div id="angle">

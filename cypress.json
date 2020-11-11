@@ -1,0 +1,8 @@
+{
+    "baseUrl": "http://localhost:8080", 
+    "integrationFolder": "src", 
+    "testFiles": "**/*.spec.js", 
+    "video": false, 
+    "viewportHeight": 1000, 
+    "viewportWidth": 1600 
+    }
