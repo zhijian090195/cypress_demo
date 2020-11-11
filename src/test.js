@@ -1691,7 +1691,7 @@ function returnDegrees() {
 }
 
 //給angle array和distance在x array裡的位置值，回傳該位置在angle array的值
-export function xAxis(b, c) {
+export function Result(b, c) {
   const angle_array = returnDegrees();
   // const resultX = findXAxis(a);
   // distance位於x_array的位置
@@ -1700,7 +1700,6 @@ export function xAxis(b, c) {
     return null;
   } else {
     const finalResult = angle_array.find((item, index) => index === resultY);
-    console.log(finalResult);
     if (finalResult) {
       return finalResult;
     } else {
@@ -1715,7 +1714,6 @@ export function divider2(array) {
   let a = 0;
   let newResult = [];
   array.forEach((item, index) => {
-    // console.log(item);
     if (index === count) {
       const dividerCount = (item.value + a.value) / 2;
       newResult.push({ value: parseFloat(dividerCount.toFixed(2)) });
@@ -1730,7 +1728,6 @@ export function divider2(array) {
       a = item;
     }
   });
-  // console.log(newResult);
   return newResult;
 }
 
@@ -1849,49 +1846,39 @@ export function findXAxis(a) {
 // b>>body width,c>>distance
 export function findYAxis(b, c) {
   if (b < 20 || b > 70 || b % 1 !== 0) {
-    // console.log(b);
-    alert(
-      "Please Enter A Integer Between 20~70 In The Vertebral Width input box."
-    );
-    // return null;
+    const errMsg =
+      "Please Enter A Integer Between 20~70 In The Vertebral Width input box.";
+    console.warn(errMsg);
+    return null;
   } else {
     const x_array = findXAxis(b);
-    // console.log(x_array);
     const index_x = x_array.length - 1;
     if (c < x_array[0].value || c > x_array[index_x].value) {
-      alert(
+      const errMsg =
         "Please Enter A Number Between " +
-          x_array[0].value +
-          " ~ " +
-          x_array[index_x].value +
-          " In The Distance From The Vertebral Edge To The Pedicle Major Axis"
-      );
-      // return null;
+        x_array[0].value +
+        " ~ " +
+        x_array[index_x].value +
+        " In The Distance From The Vertebral Edge To The Pedicle Major Axis";
+      console.warn(errMsg);
+      return null;
     } else if (c >= x_array[0].value && c <= x_array[index_x].value) {
       // console.log(x_array[0]);
       // c位於array裡，則直接回傳位置:
       const valList = x_array.map(item => Object.values(item)[0]);
-      console.log(valList);
-      console.log(valList.includes(c));
       if (valList.includes(c)) {
-        console.log(valList.indexOf(c));
         return valList.indexOf(c);
         // c不位於array裡但界在array範圍內，則找出與他最靠近之值的位置:
       } else {
-        // console.log(c);
         for (let i = 0; i <= index_x; i++) {
           if (c > valList[i]) {
             continue;
           } else {
             var up = valList[i];
             var down = valList[i - 1];
-            console.log(up);
-            console.log(down);
             if (up - c >= c - down) {
-              console.log(valList.indexOf(down));
               return valList.indexOf(down);
             } else {
-              console.log(valList.indexOf(up));
               return valList.indexOf(up);
             }
           }

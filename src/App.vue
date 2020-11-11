@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { xAxis } from "@/test";
+import { Result } from "@/test";
 export default {
   data() {
     return {
@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     returnValue(b, c) {
-      this.angle_degrees = xAxis(b, c);
+      this.angle_degrees = Result(b, c);
       console.log(this.angle_degrees);
     }
   }
